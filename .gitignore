@@ -1,0 +1,40 @@
+# --- Dépendances ---
+node_modules
+.pnpm-store
+
+# --- Nuxt / Nitro ---
+.nuxt
+.output
+.nitro
+.cache
+.data
+dist
+
+# --- Cloudflare / Wrangler ---
+.wrangler
+.dev.vars*
+!.dev.vars.example
+
+# --- Environnement ---
+.env
+.env.*
+!.env.example
+
+# --- Lefthook (surcharges perso) ---
+lefthook-local.yml
+
+# --- Logs ---
+logs
+*.log
+pnpm-debug.log*
+
+# --- OS / éditeurs ---
+.DS_Store
+Thumbs.db
+.idea
+*.swp
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json

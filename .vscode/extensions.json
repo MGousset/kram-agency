@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "Vue.volar",
+    "oxc.oxc-vscode",
+    "dbaeumer.vscode-eslint",
+    "bradlc.vscode-tailwindcss",
+    "nuxtr.nuxtr-vscode",
+    "usernamehw.errorlens",
+    "editorconfig.editorconfig"
+  ],
+  "unwantedRecommendations": ["esbenp.prettier-vscode"]
+}

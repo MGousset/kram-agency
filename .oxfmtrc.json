@@ -1,0 +1,19 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "printWidth": 100,
+  "semi": false,
+  "singleQuote": true,
+  "trailingComma": "all",
+  "endOfLine": "lf",
+  "sortTailwindcss": {
+    "stylesheet": "./app/assets/css/main.css"
+  },
+  "ignorePatterns": [
+    ".nuxt",
+    ".output",
+    ".wrangler",
+    "node_modules",
+    "pnpm-lock.yaml",
+    "worker-configuration.d.ts"
+  ]
+}

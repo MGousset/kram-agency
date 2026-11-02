@@ -1,0 +1,16 @@
+# Hooks Git rapides (binaire natif, commandes en parallèle)
+pre-commit:
+  parallel: true
+  commands:
+    lint:
+      glob: '*.{js,mjs,ts,vue}'
+      run: pnpm oxlint {staged_files}
+    format:
+      glob: '*.{js,mjs,ts,vue,json,jsonc,css,md,yml,yaml}'
+      run: pnpm oxfmt --no-error-on-unmatched-pattern {staged_files}
+      stage_fixed: true
+
+pre-push:
+  commands:
+    typecheck:
+      run: pnpm typecheck

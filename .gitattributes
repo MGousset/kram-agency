@@ -1,0 +1,35 @@
+# LF partout dans le dépôt (cohérent avec .editorconfig / Oxfmt)
+* text=auto eol=lf
+
+# Scripts Windows : CRLF obligatoire
+*.bat  text eol=crlf
+*.cmd  text eol=crlf
+*.ps1  text eol=crlf
+
+# Scripts shell : toujours LF (sinon "bad interpreter" sous WSL / Linux)
+*.sh   text eol=lf
+
+# Fichiers générés : diff masqué, ignorés dans les stats GitHub
+pnpm-lock.yaml            -diff linguist-generated=true
+worker-configuration.d.ts linguist-generated=true
+
+# Binaires
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.webp  binary
+*.avif  binary
+*.ico   binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.otf   binary
+*.mp4   binary
+*.webm  binary
+*.mp3   binary
+*.pdf   binary
+*.zip   binary
+
+# SVG = texte (diffable)
+*.svg   text

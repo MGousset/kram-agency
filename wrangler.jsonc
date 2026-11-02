@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "kram-agency",
+  "main": "./.output/server/index.mjs",
+  "compatibility_date": "2026-11-03",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "./.output/public/",
+  },
+  "observability": { "enabled": true },
+  "preview_urls": true,
+
+  // Exemples de bindings (décommente après création) :
+  // "kv_namespaces": [{ "binding": "CACHE", "id": "<KV_ID>" }],
+  // "d1_databases": [{ "binding": "DB", "database_name": "my-db", "database_id": "<D1_ID>" }]
+}

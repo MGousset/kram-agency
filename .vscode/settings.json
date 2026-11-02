@@ -1,0 +1,42 @@
+{
+  "npm.packageManager": "pnpm",
+
+  // Formatage : Oxfmt via l'extension Oxc
+  "oxc.fmt.configPath": ".oxfmtrc.json",
+  "editor.defaultFormatter": "oxc.oxc-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "[vue]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+  "[typescript]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+  "[javascript]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+  "[json]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+  "[jsonc]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+  "[tailwindcss]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+  "[css]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+  "[markdown]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+  "[yaml]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+
+  // Lint : corrections Oxlint puis ESLint à la sauvegarde
+  "editor.codeActionsOnSave": {
+    "source.fixAll.oxc": "explicit",
+    "source.fixAll.eslint": "explicit"
+  },
+
+  "files.eol": "\n",
+  "files.associations": {
+    "*.css": "tailwindcss",
+    "wrangler.json": "jsonc"
+  },
+  "tailwindCSS.experimental.configFile": "app/assets/css/main.css",
+  "editor.quickSuggestions": { "strings": "on" },
+
+  "typescript.tsdk": "node_modules/typescript/lib",
+
+  "search.exclude": {
+    "**/.nuxt": true,
+    "**/.output": true,
+    "**/.wrangler": true,
+    "**/node_modules": true,
+    "pnpm-lock.yaml": true
+  }
+}

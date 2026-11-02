@@ -1,0 +1,3 @@
+# Copie ce fichier en .dev.vars pour `wrangler dev` (jamais commité)
+# En prod : pnpm wrangler secret put NOM_DU_SECRET
+NUXT_API_SECRET=change-me
