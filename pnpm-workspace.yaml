@@ -5,3 +5,6 @@ allowBuilds:
   lefthook: true
   unrs-resolver: true
   workerd: true
+
+overrides:
+  typescript: ~6.0.3

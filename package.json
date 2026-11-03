@@ -34,7 +34,7 @@
     "oxfmt": "^0.75.0",
     "oxlint": "^1.90.0",
     "tailwindcss": "^4.3.3",
-    "typescript": "^7.0.2",
+    "typescript": "~6.0.3",
     "vue-tsc": "^3.3.14",
     "wrangler": "^4.156.1"
   },
