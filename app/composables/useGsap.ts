@@ -15,7 +15,7 @@ export interface GsapTools {
  * - Tout est annulé au démontage du composant.
  */
 export function useGsap(
-  setup: (tools: GsapTools) => void | (() => void),
+  setup: (tools: GsapTools) => undefined | (() => void),
   scope?: Readonly<Ref<HTMLElement | null>>,
 ) {
   let mm: ReturnType<Gsap['matchMedia']> | undefined

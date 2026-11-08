@@ -83,7 +83,7 @@ const { copy } = useCopy()
   <!-- Fiche détaillée -->
   <DialogItem
     v-model:open="isOpen"
-    class="[scrollbar-width:thin] [scrollbar-color:white_var(--color-bg)] bg-bg text-fg backdrop:backdrop-blur-[5px]"
+    class="[scrollbar-thin] [scrollbar-color:white_var(--color-bg)] bg-bg text-fg backdrop:backdrop-blur-[5px]"
     @close="emit('focusImage', undefined)"
   >
     <div class="flex flex-col">
@@ -147,7 +147,7 @@ const { copy } = useCopy()
         />
       </div>
 
-      <div class="flex min-h-[300px] flex-wrap justify-center border-t-2 border-fg bg-black/40 p-2">
+      <div class="flex min-h-75 flex-wrap justify-center border-t-2 border-fg bg-black/40 p-2">
         <template v-if="shouldLoadTracks">
           <section
             v-for="group in trackGroups"
@@ -170,7 +170,7 @@ const { copy } = useCopy()
 
         <section class="min-w-[min(300px,100%)] grow p-2">
           <h3 class="text-5xl">Bio</h3>
-          <div class="flex max-w-[400px] flex-col justify-center">
+          <div class="flex max-w-100 flex-col justify-center">
             <p v-for="(line, i) in description" :key="i">{{ line }}</p>
           </div>
         </section>

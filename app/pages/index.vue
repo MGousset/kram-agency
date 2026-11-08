@@ -81,96 +81,100 @@ const footerIconClass = 'cursor-pointer transition-transform duration-75 hover:s
 </script>
 
 <template>
-  <nav
-    ref="nav"
-    data-anim="hero"
-    aria-label="Navigation principale"
-    class="fixed left-1/2 z-100 flex w-[25rem] max-w-full -translate-1/2 items-end justify-between px-8 py-4 transition-[top] duration-350 ease-linear"
-    :class="isAtTop ? 'top-[65%]' : 'top-[5%]'"
-  >
-    <LeftRightAnimated animation="leftRight">
-      <a href="#top" :class="linkClass" @click.prevent="scrollToSection('top')">KRAM</a>
-    </LeftRightAnimated>
-    <LeftRightAnimated animation="rightLeft">
-      <a href="#artists" :class="linkClass" @click.prevent="scrollToSection('artists')">ARTISTES</a>
-    </LeftRightAnimated>
-  </nav>
-
-  <header id="top" class="sticky top-0 z-0 h-dvh overflow-hidden bg-bg">
-    <AnimatedBg :animated="IS_BG_ANIMATED" :bg-colors="bgColors" class="absolute inset-0" />
-    <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-black/20" />
-
-    <div
+  <div>
+    <nav
+      ref="nav"
       data-anim="hero"
-      class="absolute inset-x-0 flex -translate-y-1/2 justify-center px-4 transition-[top] duration-350 ease-linear"
-      :class="isAtTop ? 'top-1/2' : '-top-[10%]'"
+      aria-label="Navigation principale"
+      class="fixed left-1/2 z-100 flex w-[25rem] max-w-full -translate-1/2 items-end justify-between px-8 py-4 transition-[top] duration-350 ease-linear"
+      :class="isAtTop ? 'top-[65%]' : 'top-[5%]'"
     >
-      <h1
-        ref="title"
-        class="text-[9vw] leading-none tracking-wide whitespace-pre text-fg select-none"
-      >
-        KRAM AGENCY
-      </h1>
-    </div>
-  </header>
+      <LeftRightAnimated animation="leftRight">
+        <a href="#top" :class="linkClass" @click.prevent="scrollToSection('top')">KRAM</a>
+      </LeftRightAnimated>
+      <LeftRightAnimated animation="rightLeft">
+        <a href="#artists" :class="linkClass" @click.prevent="scrollToSection('artists')"
+          >ARTISTES</a
+        >
+      </LeftRightAnimated>
+    </nav>
 
-  <main id="artists" ref="artists" class="relative z-1 w-full overflow-x-hidden">
-    <section
-      aria-labelledby="artists-title"
-      class="flex h-dvh flex-col items-center bg-black/10 pb-12"
-    >
-      <h2 id="artists-title" class="flex h-36 shrink-0 items-end justify-center text-fg">
-        ARTISTES
-      </h2>
+    <header id="top" class="sticky top-0 z-0 h-dvh overflow-hidden bg-bg">
+      <AnimatedBg :animated="IS_BG_ANIMATED" :bg-colors="bgColors" class="absolute inset-0" />
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-black/20" />
 
       <div
-        class="min-h-0 w-full flex-1 [scrollbar-width:thin] [scrollbar-color:white_transparent] overflow-y-auto px-4 py-2.5"
+        data-anim="hero"
+        class="absolute inset-x-0 flex -translate-y-1/2 justify-center px-4 transition-[top] duration-350 ease-linear"
+        :class="isAtTop ? 'top-1/2' : '-top-[10%]'"
       >
-        <!-- Remplace centerArtistItems() : cartes de 250 à 450 px, centrées -->
-        <div
-          class="grid grid-cols-[repeat(auto-fit,minmax(min(250px,100%),450px))] justify-center gap-4"
+        <h1
+          ref="title"
+          class="text-[9vw] leading-none tracking-wide whitespace-pre text-fg select-none"
         >
-          <ArtistItem
-            v-for="artist in artistes"
-            :key="artist.name"
-            v-bind="artist"
-            @focus-image="changeBgColors"
-          />
-        </div>
+          KRAM AGENCY
+        </h1>
       </div>
-    </section>
-  </main>
+    </header>
 
-  <footer class="group fixed bottom-0 left-1/2 z-100 h-10 w-[250px] -translate-x-1/2">
-    <div
-      class="relative top-1/2 flex h-full items-center justify-around rounded-t-[10px] bg-white/70 text-fg-inverse transition-[top,background-color] duration-100 ease-in-out group-focus-within:top-0 group-focus-within:bg-white group-hover:top-0 group-hover:bg-white"
-    >
-      <a
-        href="https://www.instagram.com/krambzh/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Instagram de KRAM"
-        :class="footerIconClass"
+    <main id="artists" ref="artists" class="relative z-1 w-full overflow-x-hidden">
+      <section
+        aria-labelledby="artists-title"
+        class="flex h-dvh flex-col items-center bg-black/10 pb-12"
       >
-        <Icon name="simple-icons:instagram" class="size-6" />
-      </a>
-      <a
-        href="https://soundcloud.com/krambzh"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="SoundCloud de KRAM"
-        :class="footerIconClass"
+        <h2 id="artists-title" class="flex h-36 shrink-0 items-end justify-center text-fg">
+          ARTISTES
+        </h2>
+
+        <div
+          class="min-h-0 w-full flex-1 [scrollbar-width:thin] [scrollbar-color:white_transparent] overflow-y-auto px-4 py-2.5"
+        >
+          <!-- Remplace centerArtistItems() : cartes de 250 à 450 px, centrées -->
+          <div
+            class="grid grid-cols-[repeat(auto-fit,minmax(min(250px,100%),450px))] justify-center gap-4"
+          >
+            <ArtistItem
+              v-for="artist in artistes"
+              :key="artist.name"
+              v-bind="artist"
+              @focus-image="changeBgColors"
+            />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="group fixed bottom-0 left-1/2 z-100 h-10 w-[250px] -translate-x-1/2">
+      <div
+        class="relative top-1/2 flex h-full items-center justify-around rounded-t-[10px] bg-white/70 text-fg-inverse transition-[top,background-color] duration-100 ease-in-out group-focus-within:top-0 group-focus-within:bg-white group-hover:top-0 group-hover:bg-white"
       >
-        <Icon name="simple-icons:soundcloud" class="size-6" />
-      </a>
-      <button
-        type="button"
-        aria-label="Copier l'adresse email de booking"
-        :class="footerIconClass"
-        @click="copy(BOOKING_EMAIL)"
-      >
-        <Icon name="lucide:mail" class="size-6" />
-      </button>
-    </div>
-  </footer>
+        <a
+          href="https://www.instagram.com/krambzh/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram de KRAM"
+          :class="footerIconClass"
+        >
+          <Icon name="simple-icons:instagram" class="size-6" />
+        </a>
+        <a
+          href="https://soundcloud.com/krambzh"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="SoundCloud de KRAM"
+          :class="footerIconClass"
+        >
+          <Icon name="simple-icons:soundcloud" class="size-6" />
+        </a>
+        <button
+          type="button"
+          aria-label="Copier l'adresse email de booking"
+          :class="footerIconClass"
+          @click="copy(BOOKING_EMAIL)"
+        >
+          <Icon name="lucide:mail" class="size-6" />
+        </button>
+      </div>
+    </footer>
+  </div>
 </template>
