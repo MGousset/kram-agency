@@ -2,12 +2,42 @@
 
 @theme {
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --color-brand-500: #6366f1;
-  --color-brand-600: #4f46e5;
+
+  --color-bg: #181818;
+  --color-fg: #ffffff;
+  --color-bg-inverse: #ffffff;
+  --color-fg-inverse: #181818;
 }
 
-/* Évite le flash du hero avant le chargement de GSAP.
-   Si l'utilisateur préfère moins d'animations, rien n'est caché. */
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-black font-sans text-fg antialiased;
+    min-height: 100dvh;
+    overflow-y: hidden; /* navigation uniquement par les liens KRAM / ARTISTES */
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  main h1 {
+    font-size: 5rem;
+  }
+  main h2 {
+    font-size: 4rem;
+  }
+  main h3 {
+    font-size: 3rem;
+  }
+  main h4 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Évite le flash du titre et de la navbar avant le chargement de GSAP.
+   Si le visiteur préfère moins d'animations, rien n'est caché. */
 @media (prefers-reduced-motion: no-preference) {
   [data-anim='hero'] > * {
     visibility: hidden;

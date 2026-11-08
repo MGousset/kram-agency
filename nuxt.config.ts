@@ -4,10 +4,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2026-11-03',
   devtools: { enabled: true },
 
-  // Tester les comportements de Nuxt 5 (à activer sur une branche dédiée)
-  // future: { compatibilityVersion: 5 },
-
-  modules: ['@nuxt/eslint', '@nuxt/fonts'],
+  modules: ['@nuxt/eslint', '@nuxt/fonts', '@nuxt/icon', '@vueuse/nuxt'],
 
   css: ['~/assets/css/main.css'],
 
@@ -15,19 +12,19 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
 
-  // Polices téléchargées au build et servies depuis ton domaine
   fonts: {
-    families: [{ name: 'Inter', provider: 'google', weights: [400, 600, 700] }],
+    families: [{ name: 'Inter', provider: 'google', weights: [400, 700] }],
+  },
+
+  // Icônes intégrées au bundle : aucune requête au chargement de la page
+  icon: {
+    clientBundle: { scan: true },
   },
 
   routeRules: {
-    // HTML statique généré au build, servi directement par les assets Cloudflare
     '/': { prerender: true },
-    // Cache Nitro (mémoire de l'instance Worker) pendant 60 s
-    '/api/**': { cache: { maxAge: 60 } },
   },
 
-  // Build pour Cloudflare Workers (Workers + Static Assets)
   nitro: {
     preset: 'cloudflare_module',
   },
@@ -35,7 +32,9 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: 'fr' },
-      title: 'kram-agency',
+      title: 'Kram Agency',
+      meta: [{ name: 'description', content: 'KRAM, collectif et agence de DJs basé à Brest.' }],
+      link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }],
     },
   },
 })
