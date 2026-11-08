@@ -6,7 +6,9 @@
     "bradlc.vscode-tailwindcss",
     "nuxtr.nuxtr-vscode",
     "usernamehw.errorlens",
-    "editorconfig.editorconfig"
+    "editorconfig.editorconfig",
+    "antfu.iconify",
+    "boyswan.glsl-literal"
   ],
   "unwantedRecommendations": ["esbenp.prettier-vscode"]
 }
