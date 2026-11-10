@@ -1,12 +1,21 @@
 <script setup lang="ts">
-import { artistes, BOOKING_EMAIL, colorByImageUrl, defaultBgColors } from '~/data/artists'
+import { ref } from 'vue'
+import { BOOKING_EMAIL } from '~/utils/constants'
+import { defaultBgColors, toBgColors } from '~/utils/bgColors'
 
-const IS_BG_ANIMATED = true // passe à false pendant le dev pour ménager le GPU
+const IS_BG_ANIMATED = false // passe à false pendant le dev pour ménager le GPU
+
+const { data: entries } = await useFetch('/api/artists', { default: () => [] })
+console.log(entries.value)
+
+const COLOR_BY_IMAGE = computed(
+  () => new Map(entries.value.map((e) => [e.artist.imgUrls[0], toBgColors(e.bgColors)])),
+)
 
 /** Couleurs du fond selon l'artiste survolé */
 const bgColors = shallowRef(defaultBgColors)
 function changeBgColors(imgUrl?: string): void {
-  bgColors.value = (imgUrl && colorByImageUrl.get(imgUrl)) || defaultBgColors
+  bgColors.value = (imgUrl && COLOR_BY_IMAGE.value.get(imgUrl)) || defaultBgColors
 }
 
 /** Navigation entre les deux écrans (le défilement libre est bloqué) */
@@ -134,7 +143,7 @@ const footerIconClass = 'cursor-pointer transition-transform duration-75 hover:s
             class="grid grid-cols-[repeat(auto-fit,minmax(min(250px,100%),450px))] justify-center gap-4"
           >
             <ArtistItem
-              v-for="artist in artistes"
+              v-for="{ artist } in entries"
               :key="artist.name"
               v-bind="artist"
               @focus-image="changeBgColors"

@@ -1,0 +1,20 @@
+DELETE FROM artists;
+INSERT INTO artists (name, description, imgUrls, styles, trackIds, prodIds, imageCenter, bgColor1, bgColor2, insta, soundCloud) VALUES
+('Antmo',
+ '["DJ brestois à l’origine du collectif KRAM, son style est taillé pour le club avec une techno sans concession, axée sur l’efficacité.","Il construit ses sets en mêlant la répétition mentale de la techno hypnotique à un groove constant porté par ses tracks hardgroove.","Son objectif est clair : maintenir la tension et vous faire bouger du début à la fin."]',
+ '["https://img.kram-agency.com/antmo2.jpg"]', '["Hardgroove","Techno"]',
+ '["2225162126","2190957747","2190957507","2056585340"]', '["2122589400"]',
+ 50, '[206,271,264]', '[50,192,195]',
+ 'https://www.instagram.com/antmo_dule_/', 'https://soundcloud.com/krambzh/sets/antmo'),
+('MIRA',
+ '["Acid, envoûtant et percussif 👾","Co-fondateur du projet Kram à Brest, Mira existe pour faire bouger les vibrer et les âmes. Partageant des moments d''euphorie et de lâcher prise unique avec le public.","Armé de ses dernières découvertes musicales, Mira vous emmène avec lui pour un voyage immersif entre rythmiques saccadées et ligne de basse entraînante.","Montez à bord, n''attachez pas vos ceintures et laissez-vous transporter par son énergie débordante."]',
+ '["https://img.kram-agency.com/mira.jpeg"]', '["Breakbeat","Bass","Techno"]',
+ '["2221518107","2206343819","2193743643","2187448993","2134135164"]', '[]',
+ 30, '[161,168,92]', '[94,121,50]',
+ 'https://www.instagram.com/mira3o3/', 'https://soundcloud.com/mira303'),
+('Ronnie',
+ '["Fondateur du collectif KRAM et de nature plutôt curieux, Ronnie aime toucher à tout et explorer les styles musicaux qui l''entoure.","Il écoute des artistes de différents horizons et ses selecta s''en ressentent avec des sets toujours plus originaux les uns que les autres.","C’est dans le style house aux mélodies de piano entraînantes qu’il s''épanouit le plus et où il essaiera de vous y plonger en vous partageant ses dernières découvertes.","Un seul objectif, transmettre cette énergie qui l’anime pour vous faire danser et oublier le temps d’un instant ce qui vous fatigue."]',
+ '["https://img.kram-agency.com/ronnie.jpg"]', '["House","Hard House","Trance"]',
+ '["2259576593","2197414259","2197390623","2177484102","2191290279"]', '[]',
+ 30, '[230,174,196]', '[216,161,190]',
+ 'https://www.instagram.com/ronni_lusion/', 'https://soundcloud.com/raoul-rivier');

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { BgColors } from '~/data/artists'
+import type { BgColors } from '~/utils/bgColors'
 import fixedBgUrl from '~/assets/img/fixedBg.jpg'
 
 const { animated, bgColors } = defineProps<{

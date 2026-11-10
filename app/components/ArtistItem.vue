@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { BOOKING_EMAIL, type Artist } from '~/data/artists'
+import { BOOKING_EMAIL } from '~/utils/constants'
+import type { Artist } from '#shared/types/artist'
 
 // Deux racines (carte + dialog) : class/style du parent vont sur la carte
 defineOptions({ inheritAttrs: false })
