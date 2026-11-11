@@ -4,7 +4,15 @@ export default defineNuxtConfig({
   compatibilityDate: '2026-11-03',
   devtools: { enabled: true },
 
-  modules: ['@nuxt/eslint', '@nuxt/fonts', '@nuxt/icon', '@vueuse/nuxt'],
+  modules: ['@nuxt/eslint', '@nuxt/fonts', '@nuxt/icon', '@vueuse/nuxt', '@nuxthub/core'],
+
+  hub: {
+    db: {
+      dialect: 'sqlite',
+      driver: 'd1',
+      applyMigrationsDuringBuild: false, // pas d'accès à D1 dans la CI
+    },
+  },
 
   css: ['~/assets/css/main.css'],
 
@@ -22,7 +30,7 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    '/': { prerender: true },
+    '/': { swr: 600 }, // remplace prerender: true — cache de 10 min
   },
 
   nitro: {

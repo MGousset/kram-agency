@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import * as THREE from 'three'
 import { gsap } from 'gsap'
-import type { BgColors } from '~/data/artists'
+import type { BgColors } from '~/utils/bgColors'
 
 const { animated, bgColors } = defineProps<{
   animated: boolean

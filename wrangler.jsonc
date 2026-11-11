@@ -14,4 +14,19 @@
   // Exemples de bindings (décommente après création) :
   // "kv_namespaces": [{ "binding": "CACHE", "id": "<KV_ID>" }],
   // "d1_databases": [{ "binding": "DB", "database_name": "my-db", "database_id": "<D1_ID>" }]
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "kram-agency",
+      "database_id": "e1c26921-90e3-4738-a5d5-0a395441546e",
+      "migrations_dir": "server/db/migrations/sqlite",
+    },
+  ],
+  "r2_buckets": [
+    {
+      "binding": "kram-images",
+      "bucket_name": "kram-images",
+    },
+  ],
 }
