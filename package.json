@@ -7,6 +7,7 @@
     "build": "nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt build && wrangler dev",
+    "preview:lan": "nuxt build && wrangler dev --ip 0.0.0.0 --port 8787",
     "ship": "nuxt build && wrangler deploy",
     "ship:preview": "nuxt build && wrangler versions upload",
     "cf-typegen": "wrangler types",

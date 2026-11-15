@@ -13,6 +13,7 @@ export interface Artist {
 
 /** Réponse de l'API : les couleurs restent à part pour ne pas finir en attributs HTML */
 export interface ArtistEntry {
+  slug: string
   artist: Artist
   bgColors: { color1: Rgb; color2: Rgb }
 }
