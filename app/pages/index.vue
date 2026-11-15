@@ -7,7 +7,13 @@ const { data: entries } = useArtists({ server: false, lazy: true })
 
 // Une fois la liste reçue, on demande les photos au navigateur
 watch(entries, (list) => {
-  for (const { artist } of list) new Image().src = artist.imgUrls[0]
+  for (const { artist } of list) {
+    const imgUrl = artist.imgUrls[0]
+
+    if (imgUrl) {
+      new Image().src = imgUrl
+    }
+  }
 })
 </script>
 
