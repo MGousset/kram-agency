@@ -5,10 +5,16 @@ export interface Artist {
   description: string[]
   imgUrls: string[]
   styles: string[]
-  trackIds: string[]
-  prodIds: string[]
   imageCenter: number
-  network?: { insta?: string; soundCloud?: string }
+  trackPlaylistId?: string
+  prodPlaylistId?: string
+  network?: {
+    insta?: string
+    soundCloud?: string
+    youtube?: string
+    twitch?: string
+    linktree?: string
+  }
 }
 
 /** Réponse de l'API : les couleurs restent à part pour ne pas finir en attributs HTML */

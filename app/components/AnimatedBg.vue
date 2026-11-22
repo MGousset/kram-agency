@@ -7,8 +7,6 @@ const { animated, bgColors } = defineProps<{
   bgColors: BgColors
 }>()
 
-// Écran tactile ou petit écran : image fixe, Three.js n'est pas téléchargé
-const isMobile = useMediaQuery('(pointer: coarse), (max-width: 600px)')
 const reducedMotion = usePreferredReducedMotion()
 
 const isSceneReady = ref(false)

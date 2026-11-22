@@ -20,19 +20,19 @@ useSeoMeta({
 const loadedIds = ref(new Set<string>())
 const trackGroups = computed(() =>
   [
-    { title: 'Sets', ids: artist.value.trackIds },
-    { title: 'Productions', ids: artist.value.prodIds },
-  ].filter((group) => group.ids.length),
+    { title: 'Sets', id: artist.value.trackPlaylistId },
+    { title: 'Productions', id: artist.value.prodPlaylistId },
+  ].filter((group) => group.id),
 )
-const isGroupLoaded = (ids: string[]) => ids.every((id) => loadedIds.value.has(id))
+const isGroupLoaded = (id: string) => loadedIds.value.has(id)
 
 const { copy } = useCopy()
 </script>
 
 <template>
-  <main class="relative z-1 mx-auto max-w-4xl px-4 pt-28 pb-20 text-fg">
+  <main class="relative z-1 mx-auto max-w-4/5 px-4 pt-28 pb-20 text-fg">
     <NuxtLink to="/artistes" class="text-white/70 hover:text-white">← Artistes</NuxtLink>
-    <div class="mt-4 flex flex-col bg-bg">
+    <div class="mt-4 flex flex-col rounded-xs bg-bg">
       <div class="flex flex-col">
         <div class="flex h-56 flex-col justify-between border-b-2 border-fg p-4">
           <div>
@@ -48,7 +48,7 @@ const { copy } = useCopy()
             </ul>
           </div>
 
-          <div class="flex items-end justify-between">
+          <div class="mt-4 flex flex-wrap items-end justify-between">
             <div class="ml-0.5 flex items-end gap-4">
               <a
                 v-if="artist.network?.insta"
@@ -58,7 +58,7 @@ const { copy } = useCopy()
                 :aria-label="`Instagram de ${artist.name}`"
                 class="text-white/70 transition-colors hover:text-white"
               >
-                <Icon name="simple-icons:instagram" class="size-8" />
+                <Icon name="simple-icons:instagram" class="size-8!" />
               </a>
               <a
                 v-if="artist.network?.soundCloud"
@@ -68,13 +68,43 @@ const { copy } = useCopy()
                 :aria-label="`SoundCloud de ${artist.name}`"
                 class="text-white/70 transition-colors hover:text-white"
               >
-                <Icon name="simple-icons:soundcloud" class="size-8" />
+                <Icon name="simple-icons:soundcloud" class="size-8!" />
+              </a>
+              <a
+                v-if="artist.network?.youtube"
+                :href="artist.network.youtube"
+                target="_blank"
+                rel="noopener noreferrer"
+                :aria-label="`SoundCloud de ${artist.name}`"
+                class="text-white/70 transition-colors hover:text-white"
+              >
+                <Icon name="simple-icons:youtube" class="size-8!" />
+              </a>
+              <a
+                v-if="artist.network?.twitch"
+                :href="artist.network.twitch"
+                target="_blank"
+                rel="noopener noreferrer"
+                :aria-label="`SoundCloud de ${artist.name}`"
+                class="text-white/70 transition-colors hover:text-white"
+              >
+                <Icon name="simple-icons:twitch" class="size-8!" />
+              </a>
+              <a
+                v-if="artist.network?.linktree"
+                :href="artist.network.linktree"
+                target="_blank"
+                rel="noopener noreferrer"
+                :aria-label="`SoundCloud de ${artist.name}`"
+                class="text-white/70 transition-colors hover:text-white"
+              >
+                <Icon name="simple-icons:linktree" class="size-8!" />
               </a>
             </div>
 
             <button
               type="button"
-              class="mt-4 flex w-40 cursor-pointer items-center justify-around rounded-[5px] bg-white p-3 text-fg-inverse transition-[translate,box-shadow] duration-100 hover:-translate-1 hover:shadow-[0.25rem_0.25rem_0_0_white]"
+              class="flex w-40 cursor-pointer items-center justify-around rounded-[5px] bg-white p-3 text-fg-inverse transition-[translate,box-shadow] duration-100 hover:-translate-1 hover:shadow-[0.25rem_0.25rem_0_0_white]"
               @click="copy(BOOKING_EMAIL)"
             >
               <Icon name="lucide:mail" class="size-6" />
@@ -94,29 +124,29 @@ const { copy } = useCopy()
           />
         </div>
 
-        <div class="flex min-h-75 flex-wrap justify-center border-t-2 border-fg bg-black/40 p-2">
+        <div class="flex min-h-50 w-full flex-wrap justify-center border-t-2 border-fg p-2">
+          <section class="min-w-[300px] flex-1 grow p-2">
+            <h3 class="text-5xl">Bio</h3>
+            <div class="flex w-full flex-col justify-center">
+              <p v-for="(line, i) in artist.description" :key="i" class="text-justify">
+                {{ line }}
+              </p>
+            </div>
+          </section>
           <section
             v-for="group in trackGroups"
-            v-show="isGroupLoaded(group.ids)"
-            :key="group.title"
-            class="min-w-[min(300px,100%)] grow p-2"
+            v-show="group.id && isGroupLoaded(group.id)"
+            :key="group.id"
+            class="min-w-[300px] grow p-2"
           >
             <h3 class="text-5xl">{{ group.title }}</h3>
             <div class="flex flex-col">
-              <LazySoundCloudSong
-                v-for="id in group.ids"
-                :id="id"
-                :key="id"
+              <LazySoundCloudPlaylist
+                v-if="group.id"
+                :id="group.id"
                 class="my-2"
-                @loaded="loadedIds.add(id)"
+                @loaded="group.id && loadedIds.add(group.id)"
               />
-            </div>
-          </section>
-
-          <section class="min-w-[min(300px,100%)] grow p-2">
-            <h3 class="text-5xl">Bio</h3>
-            <div class="flex max-w-100 flex-col justify-center">
-              <p v-for="(line, i) in artist.description" :key="i">{{ line }}</p>
             </div>
           </section>
         </div>

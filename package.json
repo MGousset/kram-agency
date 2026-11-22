@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build",
+    "generateDb": "nuxt db generate",
     "generate": "nuxt generate",
     "preview": "nuxt build && wrangler dev",
     "preview:lan": "nuxt build && wrangler dev --ip 0.0.0.0 --port 8787",
