@@ -17,7 +17,6 @@
   body {
     @apply bg-black font-sans text-fg antialiased;
     min-height: 100dvh;
-    overflow-y: hidden; /* navigation uniquement par les liens KRAM / ARTISTES */
     font-size: 15px;
     line-height: 1.6;
   }

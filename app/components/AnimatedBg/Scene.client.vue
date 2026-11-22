@@ -10,9 +10,10 @@ const { animated, bgColors } = defineProps<{
 
 const emit = defineEmits<{ ready: [] }>()
 
-const TIME_SPEED = 0.012 // par seconde, même vitesse qu'avant à 60 fps
-const COLOR_DURATION = 0.8 // fondu entre les couleurs, en secondes
-const MAX_PIXEL_RATIO = 2
+const TIME_SPEED = 0.02 // par seconde, même vitesse qu'avant à 60 fps
+const COLOR_DURATION = 0.5 // fondu entre les couleurs, en secondes
+const RENDER_SCALE = 0.5
+const MAX_PIXEL_RATIO = 1
 
 const canvas = useTemplateRef<HTMLCanvasElement>('canvas')
 const { width, height } = useWindowSize()
@@ -44,15 +45,20 @@ const render = () => renderer?.render(scene, camera)
 
 function resize(): void {
   if (!renderer) return
-  renderer.setPixelRatio(Math.min(pixelRatio.value, MAX_PIXEL_RATIO))
-  renderer.setSize(width.value, height.value, false) // taille affichée gérée en CSS
+  renderer.setPixelRatio(Math.min(pixelRatio.value, MAX_PIXEL_RATIO) * RENDER_SCALE)
+  renderer.setSize(width.value, height.value, false)
   uniforms.u_pixelRatio.value = renderer.getPixelRatio()
   render()
 }
 
-/** Boucle d'animation à vitesse constante, en pause quand l'onglet est caché */
+const FRAME_MS = 1000 / 30
+let sinceLastFrame = 0
+
 function tick(_time: number, deltaTime: number): void {
   uniforms.u_time.value += (deltaTime / 1000) * TIME_SPEED
+  sinceLastFrame += deltaTime
+  if (sinceLastFrame < FRAME_MS) return
+  sinceLastFrame %= FRAME_MS
   render()
 }
 
@@ -89,7 +95,15 @@ watch(
 )
 
 onMounted(() => {
-  renderer = new THREE.WebGLRenderer({ canvas: canvas.value! })
+  renderer = new THREE.WebGLRenderer({
+    canvas: canvas.value!,
+    antialias: false,
+    alpha: false,
+    depth: false,
+    stencil: false,
+    powerPreference: 'low-power', // demande le GPU intégré sur les portables à deux GPU
+  })
+
   resize()
   emit('ready')
   if (animated) start()

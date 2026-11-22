@@ -30,7 +30,10 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    '/': { swr: 600 }, // remplace prerender: true — cache de 10 min
+    '/': { prerender: true },
+    '/artistes': { swr: 300 },
+    '/artistes/**': { swr: 300 },
+    '/api/**': { swr: 300 },
   },
 
   nitro: {
