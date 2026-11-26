@@ -29,6 +29,8 @@ export default defineNuxtConfig({
     '/': { prerender: true },
     '/artistes': { swr: 300 },
     '/artistes/**': { swr: 300 },
+    '/evenements': { swr: 300 },
+    '/evenements/**': { swr: 300 },
     '/api/**': { swr: 300 },
   },
 

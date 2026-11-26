@@ -1,8 +1,10 @@
 import type { schema } from '@nuxthub/db'
 import type { ArtistEntry } from '#shared/types/artist'
 import { toSlug } from '#shared/utils/slug'
+import type { EventDetail, EventSummary } from '#shared/types/event'
 
 type ArtistRow = typeof schema.artists.$inferSelect
+type EventRow = typeof schema.events.$inferSelect
 
 export const toEntry = (r: ArtistRow): ArtistEntry => ({
   slug: toSlug(r.name),
@@ -24,4 +26,20 @@ export const toEntry = (r: ArtistRow): ArtistEntry => ({
     },
   },
   bgColors: { color1: r.bgColor1, color2: r.bgColor2 },
+})
+
+export const toEventSummary = (r: EventRow): EventSummary => ({
+  slug: r.slug,
+  name: r.name,
+  date: r.date,
+  location: r.location,
+  styles: r.styles,
+  photos: r.photos.slice(0, 4),
+  guests: r.guests,
+})
+
+export const toEventDetail = (r: EventRow): EventDetail => ({
+  ...toEventSummary(r),
+  photos: r.photos, // toutes les photos sur la page détail
+  videos: r.videos,
 })
