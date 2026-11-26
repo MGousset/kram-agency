@@ -114,7 +114,7 @@ const footerIconClass = 'cursor-pointer transition-transform duration-75 hover:s
 
       <footer class="group fixed bottom-0 left-1/2 z-100 h-10 w-60 -translate-x-1/2">
         <div
-          class="relative top-3/5 flex h-full items-center justify-around rounded-t-[10px] bg-white/70 text-fg-inverse transition-[top,background-color] duration-100 ease-in-out group-focus-within:top-0 group-focus-within:bg-white group-hover:top-0 group-hover:bg-white"
+          class="flex h-full items-center justify-around rounded-t-[5px] bg-white text-fg-inverse"
         >
           <a
             href="https://www.instagram.com/krambzh/"
