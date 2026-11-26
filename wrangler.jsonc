@@ -20,7 +20,7 @@
       "binding": "DB",
       "database_name": "kram-agency",
       "database_id": "e1c26921-90e3-4738-a5d5-0a395441546e",
-      "migrations_dir": "server/db/migrations/sqlite",
+      "migrations_dir": "db/migrations/sqlite",
     },
   ],
   "r2_buckets": [

@@ -24,7 +24,11 @@ const trackGroups = computed(() =>
     { title: 'Productions', id: artist.value.prodPlaylistId },
   ].filter((group) => group.id),
 )
-const isGroupLoaded = (id: string) => loadedIds.value.has(id)
+function isGroupLoaded(id: string) {
+  return loadedIds.value.has(id)
+}
+
+const areAllImageLoaded = ref(false)
 
 const { copy } = useCopy()
 </script>
@@ -108,11 +112,12 @@ const { copy } = useCopy()
           </div>
         </div>
 
-        <div class="flex h-56 w-full">
-          <ImageCarousel
+        <div v-show="areAllImageLoaded" class="flex h-56 w-full">
+          <LazyImageCarousel
             :urls="artist.imgUrls"
             :alt="artist.name"
             :image-center="artist.imageCenter"
+            @loaded="areAllImageLoaded = true"
           />
         </div>
 

@@ -21,7 +21,8 @@
     "postinstall": "nuxt prepare",
     "dev:lan": "nuxt dev --host",
     "db:seed:local": "wrangler d1 execute kram-agency --local --file db/seed.sql",
-    "db:seed:remote": "wrangler d1 execute kram-agency --remote --file db/seed.sql"
+    "db:seed:remote": "wrangler d1 execute kram-agency --remote --file db/seed.sql",
+    "bd:migrate:remote": "pnpm wrangler d1 migrations apply DB --remote --config .output/server/wrangler.json"
   },
   "dependencies": {
     "@nuxt/ui": "^4.11.1",

@@ -2,7 +2,7 @@ DELETE FROM artists;
 INSERT INTO artists (name, description, imgUrls, videoIds, styles, imageCenter, bgColor1, bgColor2, trackPlaylistId, prodPlaylistId, insta, soundCloud, youtube, twitch, linktree) VALUES
 ('Antmo',
  '["DJ brestois à l’origine du collectif KRAM, son style est taillé pour le club avec une techno sans concession, axée sur l’efficacité.","Il construit ses sets en mêlant la répétition mentale de la techno hypnotique à un groove constant porté par ses tracks hardgroove.","Son objectif est clair : maintenir la tension et vous faire bouger du début à la fin."]',
- '["https://img.kram-agency.com/antmo2.jpg", "https://img.kram-agency.com/antmo/1.jpg", "https://img.kram-agency.com/antmo/2.jpg", "https://img.kram-agency.com/antmo/3.jpg", "https://img.kram-agency.com/antmo/4.jpg", "https://img.kram-agency.com/antmo/5.jpg", "https://img.kram-agency.com/antmo/6.jpg", "https://img.kram-agency.com/antmo/7.jpg", "https://img.kram-agency.com/antmo/8.jpg"]', 
+ '["https://img.kram-agency.com/antmo2.jpg", "https://img.kram-agency.com/antmo/1.jpg", "https://img.kram-agency.com/antmo/3.jpg", "https://img.kram-agency.com/antmo/4.jpg", "https://img.kram-agency.com/antmo/5.jpg", "https://img.kram-agency.com/antmo/6.jpg", "https://img.kram-agency.com/antmo/7.jpg", "https://img.kram-agency.com/antmo/8.jpg"]', 
  '["jMuoheh9ERQ", "zAth6tP7u6I", "pRUq4hCaIws", "8Hq1qJ95J6Y", "Jn2_NRt7D4s", "Mgr2aFQLOOw", "dmGmaN-2yQI"]', 
  '["Hardgroove","Techno"]', 50, '[206,271,264]', '[50,192,195]',
  '253A2232057596', NULL,
