@@ -4,6 +4,7 @@ export interface Artist {
   name: string
   description: string[]
   imgUrls: string[]
+  videoIds: string[]
   styles: string[]
   imageCenter: number
   trackPlaylistId?: string

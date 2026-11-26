@@ -10,6 +10,7 @@ export const toEntry = (r: ArtistRow): ArtistEntry => ({
     name: r.name,
     description: r.description,
     imgUrls: r.imgUrls,
+    videoIds: r.videoIds,
     styles: r.styles,
     trackPlaylistId: r.trackPlaylistId ?? undefined,
     prodPlaylistId: r.prodPlaylistId ?? undefined,

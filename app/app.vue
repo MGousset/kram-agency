@@ -74,78 +74,78 @@ const footerIconClass = 'cursor-pointer transition-transform duration-75 hover:s
 </script>
 
 <template>
-  <div>
-    <nav
-      ref="nav"
-      data-anim="hero"
-      aria-label="Navigation principale"
-      class="fixed left-1/2 z-100 flex w-[25rem] max-w-full -translate-1/2 transform items-end justify-between px-8 py-4 transition delay-100 ease-in-out"
-      :class="isHome ? 'top-[65%]' : 'top-[5%]'"
-      :style="y !== 0 ? 'transform: translateY(-200px)' : ''"
-    >
-      <LeftRightAnimated animation="leftRight">
-        <NuxtLink to="/" :class="linkClass">KRAM</NuxtLink>
-      </LeftRightAnimated>
-      <LeftRightAnimated animation="rightLeft">
-        <NuxtLink to="/artistes" :class="linkClass">ARTISTES</NuxtLink>
-      </LeftRightAnimated>
-    </nav>
-
-    <!-- Décor commun : fond animé + titre (les pages ont leur propre h1) -->
-    <div aria-hidden="true" class="fixed inset-0 z-0 overflow-hidden bg-bg">
-      <AnimatedBg :animated="IS_BG_ANIMATED" :bg-colors="bgColors" class="absolute inset-0" />
-      <div class="pointer-events-none absolute inset-0 bg-black/20" />
-      <div
+  <UApp>
+    <div>
+      <nav
+        ref="nav"
         data-anim="hero"
-        class="absolute inset-x-0 flex -translate-y-1/2 justify-center px-4"
-        :class="isHome ? 'top-1/2' : '-top-[10%]'"
+        aria-label="Navigation principale"
+        class="fixed left-1/2 z-100 flex w-[25rem] max-w-full -translate-1/2 transform items-end justify-between px-8 py-4 transition delay-100 ease-in-out"
+        :class="isHome ? 'top-[65%]' : 'top-[5%]'"
+        :style="y !== 0 ? 'transform: translateY(-200px)' : ''"
       >
-        <p
-          ref="title"
-          class="text-[9vw] leading-none tracking-wide whitespace-pre text-fg select-none"
+        <LeftRightAnimated animation="leftRight">
+          <NuxtLink to="/" :class="linkClass">KRAM</NuxtLink>
+        </LeftRightAnimated>
+        <LeftRightAnimated animation="rightLeft">
+          <NuxtLink to="/artistes" :class="linkClass">ARTISTES</NuxtLink>
+        </LeftRightAnimated>
+      </nav>
+
+      <!-- Décor commun : fond animé + titre (les pages ont leur propre h1) -->
+      <div aria-hidden="true" class="fixed inset-0 z-0 overflow-hidden bg-bg">
+        <AnimatedBg :animated="IS_BG_ANIMATED" :bg-colors="bgColors" class="absolute inset-0" />
+        <div class="pointer-events-none absolute inset-0 bg-black/20" />
+        <div
+          data-anim="hero"
+          class="absolute inset-x-0 flex -translate-y-1/2 justify-center px-4"
+          :class="isHome ? 'top-1/2' : 'top-[-10%]'"
         >
-          KRAM AGENCY
-        </p>
+          <p
+            ref="title"
+            class="text-[9vw] leading-none tracking-wide whitespace-pre text-fg select-none"
+          >
+            KRAM AGENCY
+          </p>
+        </div>
       </div>
+
+      <NuxtPage />
+
+      <footer class="group fixed bottom-0 left-1/2 z-100 h-10 w-60 -translate-x-1/2">
+        <div
+          class="relative top-3/5 flex h-full items-center justify-around rounded-t-[10px] bg-white/70 text-fg-inverse transition-[top,background-color] duration-100 ease-in-out group-focus-within:top-0 group-focus-within:bg-white group-hover:top-0 group-hover:bg-white"
+        >
+          <a
+            href="https://www.instagram.com/krambzh/"
+            target="_blank"
+            aria-label="Instagram de KRAM"
+            class="h-3.5"
+            :class="footerIconClass"
+          >
+            <Icon name="simple-icons:instagram" class="flex size-5!" />
+          </a>
+          <a
+            href="https://soundcloud.com/krambzh"
+            target="_blank"
+            aria-label="SoundCloud de KRAM"
+            class="h-5"
+            :class="footerIconClass"
+          >
+            <Icon name="simple-icons:soundcloud" class="flex size-5!" />
+          </a>
+          <button
+            type="button"
+            aria-label="Copier l'adresse email de booking"
+            class="h-5"
+            :class="footerIconClass"
+            @click="copy(BOOKING_EMAIL)"
+          >
+            <Icon name="lucide:mail" class="flex size-5!" />
+          </button>
+        </div>
+      </footer>
+      ->
     </div>
-
-    <NuxtPage />
-
-    <AppToast />
-
-    <footer class="group fixed bottom-0 left-1/2 z-100 h-10 w-[250px] -translate-x-1/2">
-      <div
-        class="relative top-3/5 flex h-full items-center justify-around rounded-t-[10px] bg-white/70 text-fg-inverse transition-[top,background-color] duration-100 ease-in-out group-focus-within:top-0 group-focus-within:bg-white group-hover:top-0 group-hover:bg-white"
-      >
-        <a
-          href="https://www.instagram.com/krambzh/"
-          target="_blank"
-          aria-label="Instagram de KRAM"
-          class="h-3.5"
-          :class="footerIconClass"
-        >
-          <Icon name="simple-icons:instagram" class="size-5!" />
-        </a>
-        <a
-          href="https://soundcloud.com/krambzh"
-          target="_blank"
-          aria-label="SoundCloud de KRAM"
-          class="h-5"
-          :class="footerIconClass"
-        >
-          <Icon name="simple-icons:soundcloud" class="size-5!" />
-        </a>
-        <button
-          type="button"
-          aria-label="Copier l'adresse email de booking"
-          class="h-5"
-          :class="footerIconClass"
-          @click="copy(BOOKING_EMAIL)"
-        >
-          <Icon name="lucide:mail" class="size-5!" />
-        </button>
-      </div>
-    </footer>
-    ->
-  </div>
+  </UApp>
 </template>

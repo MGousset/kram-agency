@@ -1,0 +1,1 @@
+ALTER TABLE `artists` ADD `videoIds` text NOT NULL DEFAULT "[]";

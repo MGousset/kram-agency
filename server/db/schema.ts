@@ -6,6 +6,7 @@ export const artists = sqliteTable('artists', {
   name: text().notNull(),
   description: text({ mode: 'json' }).$type<string[]>().notNull(),
   imgUrls: text({ mode: 'json' }).$type<string[]>().notNull(),
+  videoIds: text({ mode: 'json' }).$type<string[]>().notNull().default([]),
   styles: text({ mode: 'json' }).$type<string[]>().notNull(),
   imageCenter: integer().notNull().default(50),
   bgColor1: text({ mode: 'json' }).$type<Rgb>().notNull(),

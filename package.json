@@ -24,6 +24,7 @@
     "db:seed:remote": "wrangler d1 execute kram-agency --remote --file db/seed.sql"
   },
   "dependencies": {
+    "@nuxt/ui": "^4.11.1",
     "@nuxthub/core": "0.10.12",
     "@vueuse/core": "^15.0.0",
     "drizzle-orm": "^0.45.4",
@@ -37,9 +38,6 @@
     "@iconify-json/lucide": "^1.2.150",
     "@iconify-json/simple-icons": "^1.2.101",
     "@nuxt/eslint": "^1.17.0",
-    "@nuxt/fonts": "^1.2.0",
-    "@nuxt/icon": "^2.6.2",
-    "@tailwindcss/vite": "^4.3.3",
     "@types/three": "^0.187.0",
     "@vueuse/nuxt": "^15.0.0",
     "drizzle-kit": "^0.31.11",

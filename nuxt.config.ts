@@ -1,10 +1,8 @@
-import tailwindcss from '@tailwindcss/vite'
-
 export default defineNuxtConfig({
   compatibilityDate: '2026-11-03',
   devtools: { enabled: true },
 
-  modules: ['@nuxt/eslint', '@nuxt/fonts', '@nuxt/icon', '@vueuse/nuxt', '@nuxthub/core'],
+  modules: ['@nuxt/eslint', '@vueuse/nuxt', '@nuxthub/core', '@nuxt/ui'],
 
   hub: {
     db: {
@@ -16,9 +14,7 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
-  vite: {
-    plugins: [tailwindcss()],
-  },
+  ui: { colorMode: false },
 
   fonts: {
     families: [{ name: 'Inter', provider: 'google', weights: [400, 700] }],
@@ -42,7 +38,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      htmlAttrs: { lang: 'fr' },
+      htmlAttrs: { lang: 'fr', class: 'light' },
       title: 'Kram Agency',
       meta: [{ name: 'description', content: 'KRAM, collectif et agence de DJs basé à Brest.' }],
       link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }],
