@@ -4,40 +4,39 @@ const { urls, alt } = defineProps<{
   alt: string
 }>()
 
-const emit = defineEmits<{ loaded: [] }>()
-
 const loadedByUrl = new Map<string, boolean>(urls.map((url) => [url, false]))
 const areAllImageLoaded = ref(false)
 
-function onReady(url: string): void {
-  if (areAllImageLoaded.value) return
+function setUrlReady(url: string): void {
   loadedByUrl.set(url, true)
 
   areAllImageLoaded.value = loadedByUrl.values().every((isImgLoaded) => isImgLoaded)
-
-  if (areAllImageLoaded.value) {
-    emit('loaded')
-  }
 }
 </script>
 
 <template>
-  <UMarquee
-    :ui="{
-      content: 'gap-0! p-0',
-      root: `[--duration:60s] gap-0!`,
-    }"
-    :pause-on-hover="true"
-    :overlay="false"
-  >
-    <img
-      v-for="(url, i) in urls"
-      :key="i"
-      :src="url"
-      :alt="i < urls.length ? `${alt}, photo ${i + 1}` : ''"
-      :aria-hidden="i >= urls.length || undefined"
-      class="h-full w-90 object-cover"
-      @load="onReady(url)"
-    />
-  </UMarquee>
+  <div class="h-full w-full">
+    <USkeleton v-show="!areAllImageLoaded" class="h-full w-full rounded-none" />
+    <UMarquee
+      v-show="areAllImageLoaded"
+      :ui="{
+        content: 'gap-0! p-0',
+        root: `[--duration:60s] gap-0!`,
+      }"
+      :pause-on-hover="true"
+      :overlay="false"
+      :image-center="50"
+      class="h-full w-full"
+    >
+      <div v-for="(url, i) in urls" :key="i" class="h-full w-90">
+        <img
+          :src="url"
+          :alt="i < urls.length ? `${alt}, photo ${i + 1}` : ''"
+          :aria-hidden="i >= urls.length || undefined"
+          class="h-full w-90 object-cover"
+          @load="setUrlReady(url)"
+        />
+      </div>
+    </UMarquee>
+  </div>
 </template>

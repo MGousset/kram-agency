@@ -17,18 +17,12 @@ useSeoMeta({
   ogImage: () => artist.value.imgUrls[0],
 })
 
-const loadedIds = ref(new Set<string>())
 const trackGroups = computed(() =>
   [
     { title: 'Records', id: artist.value.trackPlaylistId },
     { title: 'Productions', id: artist.value.prodPlaylistId },
   ].filter((group) => group.id),
 )
-function isGroupLoaded(id: string) {
-  return loadedIds.value.has(id)
-}
-
-const areAllImageLoaded = ref(false)
 
 const { copy } = useCopy()
 </script>
@@ -103,7 +97,7 @@ const { copy } = useCopy()
 
             <button
               type="button"
-              class="flex w-24 cursor-pointer items-center justify-around rounded-[5px] bg-white p-3 text-fg-inverse transition-[translate,box-shadow] duration-100 hover:-translate-1 hover:shadow-[0.25rem_0.25rem_0_0_white]"
+              class="flex w-24 cursor-pointer items-center justify-around rounded-[5px] bg-white p-2 text-fg-inverse transition-[translate,box-shadow] duration-100 hover:-translate-1 hover:shadow-[0.25rem_0.25rem_0_0_white]"
               @click="copy(BOOKING_EMAIL)"
             >
               <Icon name="lucide:mail" class="size-6" />
@@ -112,12 +106,11 @@ const { copy } = useCopy()
           </div>
         </div>
 
-        <div v-show="areAllImageLoaded" class="flex h-56 w-full">
+        <div class="flex h-56 w-full">
           <LazyImageCarousel
             :urls="artist.imgUrls"
             :alt="artist.name"
             :image-center="artist.imageCenter"
-            @loaded="areAllImageLoaded = true"
           />
         </div>
 
@@ -131,20 +124,10 @@ const { copy } = useCopy()
             </div>
           </section>
 
-          <section
-            v-for="group in trackGroups"
-            v-show="group.id && isGroupLoaded(group.id)"
-            :key="group.id"
-            class="w-[50%] min-w-90 p-2"
-          >
+          <section v-for="group in trackGroups" :key="group.id" class="w-[50%] min-w-90 p-2">
             <h3 class="text-3xl">{{ group.title }}</h3>
             <div class="flex flex-col">
-              <LazySoundCloudPlaylist
-                v-if="group.id"
-                :id="group.id"
-                class="my-2"
-                @loaded="group.id && loadedIds.add(group.id)"
-              />
+              <LazySoundCloudPlaylist v-if="group.id" :id="group.id" class="my-2" />
             </div>
           </section>
 

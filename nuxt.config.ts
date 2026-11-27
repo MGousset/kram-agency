@@ -45,5 +45,6 @@ export default defineNuxtConfig({
       meta: [{ name: 'description', content: 'KRAM, collectif et agence de DJs basé à Brest.' }],
       link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }],
     },
+    pageTransition: { name: 'scroll-down', mode: 'out-in' },
   },
 })

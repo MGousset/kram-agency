@@ -1,25 +1,23 @@
 <script setup lang="ts">
 import type { GsapTools } from '~/composables/useGsap'
 
-const { animated = true, animation } = defineProps<{
+const { animated = true } = defineProps<{
   animated?: boolean
-  animation: 'leftRight' | 'rightLeft'
 }>()
 
-const AMPLITUDE = 12 // px
+const AMPLITUDE = 8 // px
 
 const el = useTemplateRef<HTMLElement>('el')
 let tween: ReturnType<GsapTools['gsap']['fromTo']> | undefined
 
 useGsap(({ gsap }) => {
-  const dir = animation === 'leftRight' ? 1 : -1
-  const duration = gsap.utils.random(1, 2)
+  const duration = gsap.utils.random(3, 6)
 
   tween = gsap.fromTo(
     el.value,
-    { x: -AMPLITUDE * dir },
+    { x: -AMPLITUDE },
     {
-      x: AMPLITUDE * dir,
+      x: AMPLITUDE,
       duration,
       delay: gsap.utils.random(0, duration),
       ease: 'sine.inOut',

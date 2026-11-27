@@ -14,7 +14,7 @@ function select(id: string) {
 <template>
   <div v-if="currentId" class="flex w-full flex-col">
     <!-- Lecteur -->
-    <div class="aspect-video w-full overflow-hidden rounded-[5px] bg-black lg:flex-1">
+    <div class="aspect-video w-full overflow-hidden rounded-[5px]">
       <iframe
         :key="currentId"
         :src="getYoutubeEmbedUrl(currentId, autoplay)"

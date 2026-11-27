@@ -21,19 +21,29 @@
     font-size: 15px;
     line-height: 1.6;
   }
+}
 
-  main h1 {
-    font-size: 5rem;
-  }
-  main h2 {
-    font-size: 4rem;
-  }
-  main h3 {
-    font-size: 3rem;
-  }
-  main h4 {
-    font-size: 1.5rem;
-  }
+.scroll-down-enter-active,
+.scroll-down-leave-active,
+.scroll-up-enter-active,
+.scroll-up-leave-active {
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Aller plus loin : l'ancienne page monte, la nouvelle arrive par le bas */
+.scroll-down-leave-to {
+  transform: translateY(-100dvh);
+}
+.scroll-down-enter-from {
+  transform: translateY(100dvh);
+}
+
+/* Revenir : l'inverse */
+.scroll-up-leave-to {
+  transform: translateY(100dvh);
+}
+.scroll-up-enter-from {
+  transform: translateY(-100dvh);
 }
 
 /* Évite le flash du titre et de la navbar avant le chargement de GSAP.
